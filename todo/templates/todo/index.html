@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>To Do</title>
-    </head>
-    <body>
-        <p>Tasks for today:</p>
-        <ul>
+{% extends "todo/layout.html" %}
+
+{% block body %}
+        <p class="h4 mb-3">Tasks for today:</p>
+        <ul class="list-group">
             {% for task in tasks %}
-            <li>{{ task }}</li>
+                <li class="list-group-item" style="max-width: 20vw;">{{ task }}</li>
+            {% empty %}
+                <li class="list-group-item" style="max-width: 20vw;">No tasks.</li>
             {% endfor %}
         </ul>
-    </body>
-</html>
+        <a href="{% url 'todo:add' %}" class="btn btn-primary">Add new</a>
+{% endblock %}
